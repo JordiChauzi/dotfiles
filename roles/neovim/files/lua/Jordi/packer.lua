@@ -84,7 +84,6 @@ local function packer_startup()
   use 'nvim-lua/popup.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = 'rmagatti/session-lens',
     config = function ()
       require'Jordi.plugins.telescope'.init()
     end
