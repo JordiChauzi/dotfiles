@@ -106,13 +106,13 @@
   community.general.git_config:
     name: alias.undo
     scope: global
-    value: !git reset HEAD~1 --mixed
+    value: '!git reset HEAD~1 --mixed'
 
 - name: Set alias alias
   community.general.git_config:
     name: alias.alias
     scope: global
-    value: !git config -l | grep ^alias | cut -c 7- | sort
+    value: '!git config -l | grep ^alias | cut -c 7- | sort'
 
 - name: Set core.pager
   community.general.git_config:
