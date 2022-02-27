@@ -1,0 +1,206 @@
+---
+- name: Install
+  ansible.builtin.package:
+    name:
+      - git
+    state: latest
+  become: yes
+
+- name: Set alias l
+  community.general.git_config:
+    name: alias.l
+    scope: global
+    value: log --pretty=oneline -n 20 --graph --abbrev-commit
+
+- name: Set alias s
+  community.general.git_config:
+    name: alias.s
+    scope: global
+    value: status -s
+
+- name: Set alias st
+  community.general.git_config:
+    name: alias.st
+    scope: global
+    value: status
+
+- name: Set alias d
+  community.general.git_config:
+    name: alias.d
+    scope: global
+    value: diff
+
+- name: Set alias dd
+  community.general.git_config:
+    name: alias.dd
+    scope: global
+    value: diff --submodule=diff
+
+- name: Set alias ff
+  community.general.git_config:
+    name: alias.f
+    scope: global
+    value: pull --ff-only
+
+- name: Set alias go
+  community.general.git_config:
+    name: alias.go
+    scope: global
+    value: "!f() { git checkout -b \"$1\ 2> /dev/null || git checkout \"$1\"; }; f"
+
+- name: Set alias graph
+  community.general.git_config:
+    name: alias.graph
+    scope: global
+    value: log --graph --color
+
+- name: Set alias tags
+  community.general.git_config:
+    name: alias.tags
+    scope: global
+    value: tag -l
+
+- name: Set alias branches
+  community.general.git_config:
+    name: alias.branches
+    scope: global
+    value: branch -a
+
+- name: Set alias remotes
+  community.general.git_config:
+    name: alias.remotes
+    scope: global
+    value: remove -v
+
+- name: Set alias amend
+  community.general.git_config:
+    name: alias.amend
+    scope: global
+    value: commit --amend --reuse-message=HEAD
+
+- name: Set alias rb
+  community.general.git_config:
+    name: alias.rb
+    scope: global
+    value: "!f() { git rebase -i HEAD~$1; }; f"
+
+- name: Set alias fc
+  community.general.git_config:
+    name: alias.fc
+    scope: global
+    value: "!f() { git log --decorate --date=short --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' -S$1; }; f"
+
+- name: Set alias fm
+  community.general.git_config:
+    name: alias.fm
+    scope: global
+    value: "!f() { git log --decorate --date=short --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --grep=$1; }; f"
+
+- name: Set alias lg
+  community.general.git_config:
+    name: alias.lg
+    scope: global
+    value: log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit
+
+- name: Set alias undo
+  community.general.git_config:
+    name: alias.undo
+    scope: global
+    value: !git reset HEAD~1 --mixed
+
+- name: Set alias alias
+  community.general.git_config:
+    name: alias.alias
+    scope: global
+    value: !git config -l | grep ^alias | cut -c 7- | sort
+
+- name: Set core.pager
+  community.general.git_config:
+    name: core.pager
+    scope: global
+    value: delta
+
+- name: Set core.whitespace
+  community.general.git_config:
+    name: core.whitespace
+    scope: global
+    value: space-before-tab,-indent-with-non-tab,trailing-space
+
+- name: Set delta.navigate
+  community.general.git_config:
+    name: delta.navigate
+    scope: global
+    value: true
+
+- name: Set delta.side-by-side
+  community.general.git_config:
+    name: delta.side-by-side
+    scope: global
+    value: true
+
+- name: Set diff.colorMoved
+  community.general.git_config:
+    name: diff.colorMoved
+    scope: global
+    value: default
+
+- name: Set diff.renames
+  community.general.git_config:
+    name: diff.renames
+    scope: global
+    value: copies
+
+- name: Set diff.submodule
+  community.general.git_config:
+    name: diff.submodule
+    scope: global
+    value: log
+
+- name: Set fetch.prune
+  community.general.git_config:
+    name: fetch.prune
+    scope: global
+    value: true
+
+- name: Set help.autocorrect
+  community.general.git_config:
+    name: help.autocorrect
+    scope: global
+    value: 1
+
+- name: Set interactive.diffFilter
+  community.general.git_config:
+    name: interactive.diffFilter
+    scope: global
+    value: delta --color--only
+
+- name: Set merge.conflictstyle
+  community.general.git_config:
+    name: merge.conflictstyle
+    scope: global
+    value: diff3
+
+- name: Set pull.rebase
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: true
+
+- name: Set rebase.autoStash
+  community.general.git_config:
+    name: rebase.autoStash
+    scope: global
+    value: true
+
+- name: Set user.email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_user_email }}"
+  no_log: true
+
+- name: Set user.name
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_user_name }}"

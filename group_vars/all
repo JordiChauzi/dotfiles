@@ -1,0 +1,27 @@
+default_roles:
+  - bat
+  - bottom
+  - delta
+  - docker
+  - exa
+  - fd
+  - firefox
+  - git
+  - httpie
+  - hyperfine
+  - i3
+  - jsonnet
+  - kitty
+  - lazydocker
+  - lazygit
+  - mimeapps
+  - neovim
+  - nitrogen
+  - oh-my-tmux
+  - oh-my-zsh
+  - open-vm-tools
+  - postman
+  - ripgrep
+  - system
+  - tmux
+  - zsh
