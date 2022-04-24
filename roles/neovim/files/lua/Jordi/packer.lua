@@ -36,6 +36,7 @@ local function packer_startup()
           "bashls",
           "dockerls",
           "html",
+          "jsonls",
           "pylsp",
           "rust_analyzer",
           "sumneko_lua",
