@@ -35,6 +35,7 @@ local function packer_startup()
         ensure_installed = {
           "bashls",
           "dockerls",
+          "graphql",
           "html",
           "jsonls",
           "pylsp",
