@@ -4,12 +4,21 @@
   tasks:
     - name: Set roles
       set_fact:
-        roles: "{{ default_roles | difference(exclude_roles | default([])) }}"
+        roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles | difference(exclude_roles | default([])) }}"
+      tags:
+        - always
 
     - name: Display roles
       debug: "var=roles"
+      tags:
+        - always
 
     - name: Run roles
       include_role:
+        apply:
+          tags:
+            - "{{ item }}"
         name: "{{ item }}"
       with_items: "{{ roles }}"
+      tags:
+        - always
