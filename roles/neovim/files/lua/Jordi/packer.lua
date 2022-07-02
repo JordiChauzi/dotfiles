@@ -52,7 +52,7 @@ local function packer_startup()
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = 'TSUpdate',
+    run = ':TSUpdate',
     config = function ()
       require'Jordi.plugins.treesitter'.init()
     end,
@@ -102,9 +102,6 @@ local function packer_startup()
   -- Git Support
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
     config = function ()
       require'Jordi.plugins.gitsigns'.init()
     end

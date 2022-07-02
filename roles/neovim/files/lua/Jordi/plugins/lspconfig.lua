@@ -69,6 +69,7 @@ local function init()
     "bashls",
     "dockerls",
     "graphql",
+    "gopls",
     "html",
     "jsonls",
     "pylsp",
